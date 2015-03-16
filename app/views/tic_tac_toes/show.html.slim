@@ -1,0 +1,11 @@
+p It's #{@game.current_symbol}'s turn.
+
+table.table
+  - @game.board_rows.each do |row|
+    tr
+      - row.each do |cell|
+        td
+          - if cell
+            = cell
+          - else
+            = "-"

@@ -1,6 +1,5 @@
 class TicTacToesController < ApplicationController
   def new
-    # Pick opponent
   end
 
   def create

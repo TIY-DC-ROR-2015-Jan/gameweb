@@ -37,6 +37,10 @@ class TicTacToe < ActiveRecord::Base
     save!
   end
 
+  def board_rows
+    squares.in_groups_of 3
+  end
+
   # -- Ported from PORO ----
 
   def value_at location
