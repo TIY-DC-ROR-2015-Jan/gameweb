@@ -1,7 +1,7 @@
 class TicTacToe < ActiveRecord::Base
   def self.start_game p1,p2
     g = TicTacToe.new
-    g.players = [p1,p2]
+    g.players = [p1,p2].to_json
     g.current_player = 0
     g.save!
     g
@@ -12,7 +12,7 @@ class TicTacToe < ActiveRecord::Base
   end
 
   def players
-    self[:players].gsub('[','').gsub(']','').split(',').map { |v| v.to_i }
+    JSON.parse self[:players]
   end
 
   def player_turn? p
