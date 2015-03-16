@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe TicTacToe do
-  fit "can lookup games from the database" do
+  it "can lookup games from the database" do
     created = TicTacToe.start_game 1,2
     loaded  = TicTacToe.lookup_game created.id
     expect(created.id).to eq loaded.id

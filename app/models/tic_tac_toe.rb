@@ -14,10 +14,6 @@ class TicTacToe < ActiveRecord::Base
   end
 
   def player_turn? p
-    if current_player == 0
-      players.first == p
-    else
-      players.last == p
-    end
+    p == players[current_player]
   end
 end
