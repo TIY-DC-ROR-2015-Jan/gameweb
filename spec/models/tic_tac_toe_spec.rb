@@ -11,7 +11,7 @@ describe TicTacToe do
   it "can record a move" do
     g = TicTacToe.start_game 4,7
     g.record_move 3
-    expect(g.board.value_at 3).to eq :x
+    expect(g.value_at 3).to eq :x
   end
 
   it "knows whos turn it is" do
