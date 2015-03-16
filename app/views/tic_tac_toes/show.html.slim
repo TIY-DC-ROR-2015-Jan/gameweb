@@ -1,11 +1,23 @@
-p It's #{@game.current_symbol}'s turn.
+- if @my_turn
+  p It's YOUR turn
+- else
+  p It's #{@game.current_symbol}'s turn.
 
 table.table
+  / TODO: move this!
+  - i = 0
   - @game.board_rows.each do |row|
     tr
       - row.each do |cell|
         td
+          - i += 1
           - if cell
             = cell
           - else
-            = "-"
+            - if @my_turn
+              = form_tag @game, method: :patch
+                input type="hidden" name="move" value=i
+                button.btn.btn-default
+                  i.glyphicon.glyphicon-plus
+            - else
+              = "-"

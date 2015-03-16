@@ -10,13 +10,14 @@ class TicTacToesController < ApplicationController
 
   def show
     @game = TicTacToe.lookup_game params[:id]
+    @my_turn = @game.player_turn? current_user.id
     # TODO: view logic about taking moves if it's your turn
   end
 
   def update
     game = TicTacToe.lookup_game params[:id]
     if game.player_turn? current_user.id
-      game.record_move params[:move]
+      game.record_move params[:move].to_i
     else
       flash[:danger] = "It's not your turn!"
     end
