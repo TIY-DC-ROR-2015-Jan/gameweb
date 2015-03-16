@@ -23,8 +23,18 @@ class TicTacToe < ActiveRecord::Base
     current_player.zero? ? :x : :o
   end
 
+  def toggle_player
+    if current_player.zero?
+      update current_player: 1
+    else
+      update current_player: 0
+    end
+  end
+
   def record_move square
     place current_symbol, square
+    toggle_player
+    save!
   end
 
   # -- Ported from PORO ----
