@@ -4,6 +4,9 @@ class TicTacToesController < ApplicationController
   end
 
   def create
+    game = TicTacToe.start_game current_user.id, params[:opponent_id]
+    # TODO: what if opponent_id is invalid
+    redirect_to game
   end
 
   def show
@@ -13,7 +16,7 @@ class TicTacToesController < ApplicationController
 
   def update
     game = TicTacToe.lookup_game params[:id]
-    if game.player_turn? current_user
+    if game.player_turn? current_user.id
       game.record_move params[:move]
     else
       flash[:danger] = "It's not your turn!"
