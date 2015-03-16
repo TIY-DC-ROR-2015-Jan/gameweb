@@ -10,7 +10,7 @@ class TicTacToesController < ApplicationController
 
   def show
     @game = TicTacToe.lookup_game params[:id]
-    @my_turn = @game.player_turn? current_user.id
+    @can_play = @game.winner.nil? && @game.player_turn?(current_user.id)
     # TODO: view logic about taking moves if it's your turn
   end
 

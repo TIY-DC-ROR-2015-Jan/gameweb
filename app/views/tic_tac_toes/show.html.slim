@@ -1,4 +1,6 @@
-- if @my_turn
+- if @game.winner
+  p Game over. #{@game.winner} won.
+- elsif @can_play
   p It's YOUR turn
 - else
   p It's #{@game.current_symbol}'s turn.
@@ -14,7 +16,7 @@ table.table
           - if cell
             = cell
           - else
-            - if @my_turn
+            - if @can_play
               = form_tag @game, method: :patch
                 input type="hidden" name="move" value=i
                 button.btn.btn-default

@@ -70,7 +70,7 @@ class TicTacToe < ActiveRecord::Base
     ]
     lines.each do |line|
       winner = check_line_for_winner line
-      return winner if [:x,:o].include?(winner)
+      return winner if winner
     end
     return nil
   end
